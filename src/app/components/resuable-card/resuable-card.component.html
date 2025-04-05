@@ -1,0 +1,20 @@
+<div
+  class="border-1 border-gray-300 py-4 px-6 rounded-xl flex flex-col"
+  [class]="bgColor"
+>
+  <div class="flex justify-end">
+    <button class="cursor-pointer">
+      <fa-icon
+        class="text-base font-normal text-white"
+        [icon]="refreshIcon"
+      ></fa-icon>
+    </button>
+  </div>
+  <div class="flex flex-col gap-3">
+    <ng-content select="svg"></ng-content>
+    <div class="text-white flex flex-col w-full">
+      <span class="text-xl font-bold whitespace-nowrap">{{ amount }}</span>
+      <span class="text-[.9375rem] whitespace-nowrap">{{ text }}</span>
+    </div>
+  </div>
+</div>

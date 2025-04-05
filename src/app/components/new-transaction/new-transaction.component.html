@@ -1,0 +1,191 @@
+<div class="inca">
+  <button
+    (click)="extend()"
+    class="flex gap-2 bg-[#2a6496] text-white py-[5px] px-[10px] cursor-pointer rounded-md active:scale-[1.01] border-1 border-[rgb(36,85,128)] text-sm"
+  >
+    @if (transactService.isExtended()) {
+    <fa-icon [icon]="minusIcon"></fa-icon>
+    }@else {
+    <fa-icon [icon]="addIcon"></fa-icon>
+
+    }
+    <span>New Transaction</span>
+  </button>
+  <div
+    class="bg-[#e9e9e9] rounded-lg mt-5 flex flex-col gap-5 content"
+    [ngClass]="{ expanded: transactService.isExtended() }"
+  >
+    <form
+      class="flex flex-col gap-3"
+      [formGroup]="transactService.newTransaction"
+      (ngSubmit)="onSubmit()"
+    >
+      <div>
+        <app-add-item (inputData)="retrieveItemCode($event)" />
+        <div class="flex gap-6">
+          <button
+            type="button"
+            class="flex gap-2 bg-[#2a6496] py-2 px-3 font-bold rounded-md text-white text-xs"
+          >
+            <fa-icon [icon]="addIcon"></fa-icon>
+            <span>Add Item</span>
+          </button>
+          <input
+            class="border-1 border-[#cbcbcb] bg-white px-2 py-1 rounded-md outline-none"
+            formControlName="itemCode"
+            type="text"
+            name=""
+            id="item"
+            placeholder="Item Code"
+            #itemInput
+          />
+        </div>
+      </div>
+
+      <div class="flex gap-4 flex-wrap">
+        <div class="wrapper">
+          <label for="vat">VAT(%)</label>
+          <input
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="number"
+            placeholder="0"
+            min="0"
+            id="vat"
+            name="vat"
+          />
+        </div>
+        <div class="wrapper">
+          <label for="discount">Discount(%)</label>
+          <input
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="number"
+            placeholder="0"
+            min="0"
+            id="discount"
+            name="discount"
+          />
+        </div>
+        <div class="wrapper">
+          <label for="d-value">Discount(value)</label>
+          <input
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="number"
+            placeholder="0"
+            min="0"
+            id="d-value"
+            name="d-value"
+          />
+        </div>
+        <div class="wrapper">
+          <label for="mop">Mode of Payment</label>
+          <select
+            formControlName="paymentMode"
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            id="mop"
+            name="mop"
+          >
+            <option value="">--</option>
+            <option value="Cash">Cash</option>
+            <option value="POS">POS</option>
+            <option value="Cash and POS">Cash and POS</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="wrapper">
+          <label for="total-amount">Total Amount</label>
+          <input
+            formControlName="totalPrice"
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="text"
+            placeholder="0.00"
+            id="total-amount"
+            name=""
+          />
+        </div>
+        <div class="wrapper">
+          <label for="amount-paid">Amount Paid</label>
+          <input
+            formControlName="amountPaid"
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="text"
+            (input)="updateBalance()"
+            id="amount-paid"
+            name=""
+          />
+        </div>
+        <div class="wrapper">
+          <label for="balance">Balance</label>
+          <input
+            formControlName="balance"
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="text"
+            [value]="changeDue()"
+            id="balance"
+            name=""
+          />
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="wrapper">
+          <label for="customer-name">Customer Name</label>
+          <input
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="text"
+            placeholder="Name"
+            id="customer-name"
+            name=""
+          />
+        </div>
+        <div class="wrapper">
+          <label for="customer-phone">Customer Phone</label>
+          <input
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="text"
+            id="customer-phone"
+            placeholder="Phone Number"
+            name=""
+          />
+        </div>
+        <div class="wrapper">
+          <label for="customer-email">Customer Email</label>
+          <input
+            class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+            type="text"
+            id="customer-email"
+            placeholder="Email Address"
+            name=""
+          />
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button
+          (click)="itemInput.focus()"
+          id="item"
+          class="bg-[#2a6496] text-white py-[5px] px-[10px] cursor-pointer rounded-md active:scale-[1.01] border-1 border-[rgb(36,85,128)] text-sm"
+        >
+          <span>Use Barcode Scanner</span>
+        </button>
+        <div class="flex gap-3">
+          <button
+            type="submit"
+            class="bg-[#2a6496] text-white py-[5px] px-[10px] cursor-pointer rounded-md active:scale-[1.01] border-1 border-[rgb(36,85,128)] text-sm"
+          >
+            <span>Confirm Order</span></button
+          ><button
+            type="button"
+            (click)="reset()"
+            class="bg-[#D44B47] text-white py-[5px] px-[10px] cursor-pointer rounded-md active:scale-[1.01] border-1 border-[#d33e39] text-sm"
+          >
+            <span>Clear Order</span></button
+          ><button
+            (click)="this.extract()"
+            class="bg-[#D44B47] text-white py-[5px] px-[10px] cursor-pointer rounded-md active:scale-[1.01] border-1 border-[#D44B47] text-sm"
+          >
+            <span>Close</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

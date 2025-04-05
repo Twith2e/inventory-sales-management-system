@@ -1,0 +1,8 @@
+tr:hover {
+    background-color: #ccc;
+}
+
+::ng-deep .mat-input-element::placeholder {
+  color: blue;
+  /* Add other styles as needed */
+}

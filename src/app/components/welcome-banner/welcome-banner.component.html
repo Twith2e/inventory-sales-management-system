@@ -1,0 +1,83 @@
+<div
+  class="bg-white shadow-sm p-[.9375rem] rounded-lg flex items-center justify-between"
+>
+  <p class="font-bold text-xl">
+    <span>Hi {{ user() }} 👋, </span>
+    <span class="font-normal text-base text-[#646B72]"
+      >here is what happening with your store today</span
+    >
+  </p>
+  <div class="flex items-center gap-3">
+    <div
+      class="flex items-center gap-3 relative border-gray-300 border-1 px-3 py-1 rounded-md cursor-pointer"
+      (click)="toggleVisibility()"
+    >
+      <fa-icon class="text-gray-300" [icon]="calendarIcon"></fa-icon>
+      <button class="flex gap-1 text-sm cursor-pointer">
+        <span>Today</span>
+        <fa-icon class="relative" [icon]="chevronDown"></fa-icon>
+      </button>
+      <div
+        class="text-black absolute z-10 bg-white shadow-xl rounded-md top-9 border-1 border-gray-300 right-6/12"
+        [hidden]="!isVisible"
+      >
+        <ul class="w-fit text-xs cursor-pointer">
+          <li
+            aria-roledescription="button"
+            class="py-2 px-5 whitespace-nowrap"
+            tabindex="0"
+          >
+            Today
+          </li>
+          <li
+            aria-roledescription="button"
+            class="py-2 px-5 whitespace-nowrap"
+            tabindex="0"
+          >
+            Yesterday
+          </li>
+          <li
+            aria-roledescription="button"
+            class="py-2 px-5 whitespace-nowrap"
+            tabindex="0"
+          >
+            Last 7 Days
+          </li>
+          <li
+            aria-roledescription="button"
+            class="py-2 px-5 whitespace-nowrap"
+            tabindex="0"
+          >
+            Last 30 Days
+          </li>
+          <li
+            aria-roledescription="button"
+            class="py-2 px-5 whitespace-nowrap"
+            tabindex="0"
+          >
+            This Month
+          </li>
+          <li
+            aria-roledescription="button"
+            class="py-2 px-5 whitespace-nowrap"
+            tabindex="0"
+          >
+            Last Month
+          </li>
+          <li
+            aria-roledescription="button"
+            class="py-2 px-5 whitespace-nowrap"
+            tabindex="0"
+          >
+            Custom Range
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      class="py-1 px-3 cursor-pointer border-gray-300 border-1 rounded-md"
+    >
+      <fa-icon [icon]="refreshIcon"></fa-icon>
+    </button>
+  </div>
+</div>

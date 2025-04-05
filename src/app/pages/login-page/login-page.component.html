@@ -1,0 +1,64 @@
+<div
+  class="w-full h-screen flex flex-col justify-center items-center gap-2 bg-[#333]"
+>
+  <picture class="mb-3">
+    <source srcset="/logo.avif" type="image/avif" />
+    <source srcset="/logo.webp" type="image/webp" />
+    <img src="/logo.png" alt="logo" />
+  </picture>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="loginForm"
+    class="flex flex-col gap-3 lg:w-[40%] w-full md:w-[50%] bg-[#eeeeee] p-5 py-7 rounded-lg"
+  >
+    <div class="wrapper">
+      <label for="email">Email</label>
+      <input
+        formControlName="email"
+        class="border-gray-400 border-3 px-3 py-2 focus:border-[#333] w-full rounded-md"
+        type="text"
+        id="email"
+        name="email"
+        placeholder="Email"
+      />
+    </div>
+    <div class="wrapper">
+      <label for="password">Password</label>
+      <div
+        class="border-3 border-gray-400 focus-within:border-[#333] flex items-center py-2 px-3 rounded-md w-full"
+      >
+        <input
+          formControlName="password"
+          class="outline-none w-full h-full"
+          [type]="hidePassword ? 'password' : 'text'"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button
+          class="text-gray-900 font-bold cursor-pointer"
+          type="button"
+          (click)="togglePasswordVisibility()"
+        >
+          {{ hidePassword ? "Show" : "Hide" }}
+        </button>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button
+        [disabled]="isLoading()"
+        class="bg-[#333] w-full px-3 py-2 text-white cursor-pointer disabled:bg-[#33333325] disabled:text-[#333] disabled:cursor-not-allowed flex justify-center items-center"
+        aria-label="Login Button"
+        type="submit"
+      >
+        @if(isLoading()){
+        <div
+          class="border-3 border-blue-500 border-t-transparent h-8 w-8 animate-spin rounded-full"
+        ></div>
+        }@else{
+        <span class="text-2xl font-semibold">Log in!</span>
+        }
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,27 @@
+.wrapper{
+    align-items: start;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1px;
+    width: 100%;
+}
+
+.wrapper input, 
+.wrapper select{
+    width: 100%;
+}
+
+.content {
+  font-family: Inconsolata, sans-serif !important;
+  font-weight: 600;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 3ms linear;
+}
+
+.content.expanded {
+  border: 1px solid #cbcbcb;
+  max-height: 700px;
+  padding: 20px;
+}

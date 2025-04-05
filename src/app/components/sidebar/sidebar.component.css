@@ -1,0 +1,8 @@
+.router-link-active {
+    background-color: #fe9f43;
+    color: #fff;
+}
+
+.router-link-active:hover{
+    opacity: .7;
+}

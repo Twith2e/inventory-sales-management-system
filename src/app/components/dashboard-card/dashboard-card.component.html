@@ -1,0 +1,19 @@
+<div
+  class="bg-white border-1 border-gray-300 py-4 px-5 rounded-xl h-full flex flex-col justify-center"
+>
+  <h6 class="text-[#2ECC40] text-base font-semibold">Weekly Earning</h6>
+  <div class="flex justify-between items-center">
+    <div class="flex flex-col gap-3">
+      <span class="text-xl font-bold"> ₦100,000.00 </span>
+      <span class="text-red-500 text-sm">
+        <fa-icon [icon]="downIcon"></fa-icon> 48% decrease
+        <span class="text-[#646B72]">compare to last week</span>
+      </span>
+    </div>
+    <picture>
+      <source srcset="/earnings.avif" type="image/avif" />
+      <source srcset="/earnings.webp" type="image/webp" />
+      <img src="/earnings.png" alt="Weekly Earning" />
+    </picture>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.wrapper{
+    align-items: start;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1px;
+    width: 100%;
+}
+
+.wrapper input, 
+.wrapper select{
+    width: 100%;
+}

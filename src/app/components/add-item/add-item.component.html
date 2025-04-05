@@ -1,0 +1,62 @@
+<div class="mb-4">
+  <div class="flex gap-4 flex-wrap">
+    <app-custom-select (inputData)="retrieveData($event)"></app-custom-select>
+    <form
+      class="flex gap-4 flex-wrap"
+      [formGroup]="transactService.newTransaction"
+    >
+      <div class="wrapper">
+        <label class="whitespace-nowrap" for="available-qty"
+          >Available Quantity</label
+        >
+        <input
+          formControlName="availableQty"
+          class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+          placeholder="0"
+          type="text"
+          readonly
+          id="available-qty"
+          name="available-qty"
+        />
+      </div>
+      <div class="wrapper">
+        <label class="whitespace-nowrap" for="unit-price">Unit Price</label>
+        <input
+          formControlName="unitPrice"
+          class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+          type="text"
+          placeholder="0.00"
+          readonly
+          id="unit-price"
+          name="unit-price"
+        />
+      </div>
+      <div class="wrapper flex-1">
+        <label class="whitespace-nowrap" for="qty">Quantity</label>
+        <input
+          class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+          formControlName="quantity"
+          type="number"
+          placeholder="0"
+          (change)="updateQty($event); updateTotalPrice()"
+          [value]="qtyPicked()"
+          min="0"
+          id="qty"
+          name="qty"
+        />
+      </div>
+      <div class="wrapper">
+        <label class="whitespace-nowrap" for="total-price">Total Price</label>
+        <input
+          formControlName="tPrice"
+          class="bg-white outline-none py-1 px-3 rounded-sm border-1 border-[#cbcbcb]"
+          type="text"
+          readonly
+          placeholder="0"
+          id="total-price"
+          name="total-price"
+        />
+      </div>
+    </form>
+  </div>
+</div>

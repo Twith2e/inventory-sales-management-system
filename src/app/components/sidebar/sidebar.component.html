@@ -1,0 +1,54 @@
+<nav>
+  <ul class="text-[#666] text-sm p-6 space-y-0.5">
+    <li
+      aria-roledescription="button"
+      tabindex="0"
+      routerLink="/dashboard"
+      routerLinkActive="router-link-active"
+      class="hover:bg-[#fea143b2] rounded-md hover:text-white cursor-pointer px-4 py-3 flex gap-3 items-center"
+    >
+      <fa-icon class="text-sm" [icon]="dashboardIcon"></fa-icon>
+      Dashboard
+    </li>
+    <li
+      aria-roledescription="button"
+      tabindex="0"
+      routerLink="/transactions"
+      routerLinkActive="router-link-active"
+      class="hover:bg-[#fea143b2] rounded-md hover:text-white cursor-pointer px-4 py-3 flex items-center gap-3"
+    >
+      <fa-icon class="text-sm" [icon]="transactionsIcon"></fa-icon>
+      Transactions
+    </li>
+    <li
+      aria-roledescription="button"
+      tabindex="0"
+      routerLink="/inventory-items"
+      routerLinkActive="router-link-active"
+      class="hover:bg-[#fea143b2] rounded-md hover:text-white cursor-pointer px-4 py-3 flex items-center gap-3"
+    >
+      <fa-icon class="text-sm" [icon]="inventoryIcon"></fa-icon>
+      Inventory Items
+    </li>
+    <li
+      aria-roledescription="button"
+      tabindex="0"
+      routerLink="/database-management"
+      routerLinkActive="router-link-active"
+      class="hover:bg-[#fea143b2] rounded-md hover:text-white cursor-pointer px-4 py-3 flex items-center gap-3"
+    >
+      <fa-icon class="text-sm" [icon]="databaseIcon"></fa-icon>
+      Database Management
+    </li>
+    <li
+      aria-roledescription="button"
+      tabindex="0"
+      routerLink="/admin-management"
+      routerLinkActive="router-link-active"
+      class="hover:bg-[#fea143b2] rounded-md hover:text-white cursor-pointer px-4 py-3 flex items-center gap-3"
+    >
+      <fa-icon class="text-sm" [icon]="adminIcon"></fa-icon>
+      Admin Management
+    </li>
+  </ul>
+</nav>

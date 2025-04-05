@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+.nun {
+  font-family: Nunito, sans-serif;
+}
+
+.inca {
+  font-family: Inconsolata, sans-serif !important;
+}
+

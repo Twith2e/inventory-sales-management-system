@@ -1,0 +1,50 @@
+<nav class="flex justify-between items-center p-4 px-10">
+  <picture class="bg-[#333] py-1 px-2">
+    <source srcset="/favicon.avif" type="image/avif" />
+    <source srcset="/favicon.webp" type="image/webp" />
+    <img width="40" src="/favicon.png" alt="logo" />
+  </picture>
+  <div class="flex items-center gap-3 text-[#fafafa]">
+    <button
+      aria-label="click to show options"
+      class="text-[.8125rem] flex items-center justify-center gap-2 bg-[#FE9F43] px-3 py-[.4375rem] rounded-md font-bold"
+    >
+      <fa-icon [icon]="plusIcon"></fa-icon>
+      <span>Add New</span>
+    </button>
+    <button
+      class="text-sm bg-[rgba(200,200,200,0.3)] px-2 py-[.4375rem] rounded-md text-[#333]"
+    >
+      <span>English</span>
+      <div></div>
+    </button>
+    <button
+      class="text-sm bg-[rgba(200,200,200,0.3)] px-2 py-[.4375rem] rounded-md text-[#333]"
+    >
+      <fa-icon [icon]="notificationIcon"></fa-icon>
+    </button>
+    <button
+      class="text-sm bg-[rgba(200,200,200,0.3)] px-2 py-[.4375rem] rounded-md text-[#333]"
+    >
+      <fa-icon [icon]="settingsIcon"></fa-icon>
+    </button>
+    <mat-slide-toggle />
+    <button (click)="toggleProfile()" class="relative">
+      <span class="text-sm text-[#333]">{{ user() }}</span>
+      <div
+        class="absolute top-10 right-0 bg-white shadow-xl rounded-md border-1 border-gray-300 w-full flex flex-col"
+        [hidden]="!isProfileVisible"
+      >
+        <span class="border-b-1 border-gray-300 px-3 py-2 text-black"
+          >Account</span
+        >
+        <button
+          class="text-sm text-[#333] space-x-1 px-3 py-2 hover:text-[#FF073A] font-bold"
+        >
+          <fa-icon [icon]="logoutIcon"></fa-icon>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </button>
+  </div>
+</nav>
